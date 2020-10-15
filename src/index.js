@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-
+// CSS
 import './index.css';
+
+import {books} from "./books";
+import Book from './Book'
+
 // setup vars
 // const firstBook = {
 //     img:"https://m.media-amazon.com/images/I/41TJxOmPRjL._SY346_.jpg",
@@ -28,37 +32,8 @@ function BookList() {
             {/*<Book img={secondBook.img} title={secondBook.title} author={secondBook.author}/>*/}
         </section>
     )
-}
-
-const Book = ({img, title, author}) => {
-    // const title = 'Me: Elton John Official Autobiography';
-    // const {img, title, author} = props;
-    // console.log(props);
-    // atribute, event handler
-    // onclick, onMouseOver
-
-    const clickHandler = (e) => {
-        console.log(e);
-        console.log(e.target);
-        alert ('hello world')
-    };
-    const complexExample = (author) => {
-console.log(author)
-    };
-    return (
-        <article className='book' onMouseOver={() =>{
-            console.log(title)
-        }}>
-            <img
-                src={img}
-                alt=""/>
-            <h1 onClick={()=>console.log(title)}>{title}</h1>
-            <h4>{author}</h4>
-            <button type='button' onClick={clickHandler}>reference example</button>
-            <button type='button' onClick={() => complexExample(author)}>more comlex example</button>
-        </article>
-
-    )
 };
+
+
 
 ReactDom.render(<BookList/>, document.getElementById('root'));
