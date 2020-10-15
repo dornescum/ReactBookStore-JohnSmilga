@@ -1,17 +1,64 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDom from 'react-dom';
+
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+// setup vars
+// const firstBook = {
+//     img:"https://m.media-amazon.com/images/I/41TJxOmPRjL._SY346_.jpg",
+//     title: 'Me: Elton John Official Autobiography',
+//     author: 'Elton John'
+// };
+// const secondBook = {
+//     img:"https://m.media-amazon.com/images/I/41AIWIWFOIL.jpg",
+//     title: 'Freddie Mercury: A Life, In His Own Words',
+//     author: 'Greg Brooks'
+// };
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// const author = 'Elton John';
+// const title = 'Me: Elton John Official Autobiography';
+// const img ="https://m.media-amazon.com/images/I/41TJxOmPRjL._SY346_.jpg";
+function BookList() {
+    return (
+        <section className='booklist'>{books.map((book) => {
+            // const{img, title, author} = book;
+            return <Book key={book.id} {...book}></Book>
+        })}
+            {/*<Book img={firstBook.img} title={firstBook.title} author={firstBook.author}>*/}
+            {/*</Book>*/}
+            {/*<Book img={secondBook.img} title={secondBook.title} author={secondBook.author}/>*/}
+        </section>
+    )
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const Book = ({img, title, author}) => {
+    // const title = 'Me: Elton John Official Autobiography';
+    // const {img, title, author} = props;
+    // console.log(props);
+    // atribute, event handler
+    // onclick, onMouseOver
+
+    const clickHandler = (e) => {
+        console.log(e);
+        console.log(e.target);
+        alert ('hello world')
+    };
+    const complexExample = (author) => {
+console.log(author)
+    };
+    return (
+        <article className='book' onMouseOver={() =>{
+            console.log(title)
+        }}>
+            <img
+                src={img}
+                alt=""/>
+            <h1 onClick={()=>console.log(title)}>{title}</h1>
+            <h4>{author}</h4>
+            <button type='button' onClick={clickHandler}>reference example</button>
+            <button type='button' onClick={() => complexExample(author)}>more comlex example</button>
+        </article>
+
+    )
+};
+
+ReactDom.render(<BookList/>, document.getElementById('root'));
